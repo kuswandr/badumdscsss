@@ -27,13 +27,24 @@
     &__left {
         width: 33.3333%;
         display: table-cell;
+        @include res(tab_land) {
+            display: none;
+        }
     }
 
     &__right {
         width: 66.3333%;
         display: table-cell;
         vertical-align: middle;
+        align-items: center;
         padding: 3rem 5rem;
+        @include res(tab_land) {
+            display: block;
+            width: 100%;
+            & a.btn {
+                align-content: center;
+            }
+        }
     }
 
     &__img {
@@ -58,6 +69,10 @@
         -moz-hyphens: auto;
         -webkit-hyphens: auto;
         -ms-hyphens: auto;
+
+        @include res(phone) {
+            column-count: 1;
+        }
     }
 
     &:target {
