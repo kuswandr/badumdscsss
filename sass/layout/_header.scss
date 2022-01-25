@@ -6,12 +6,27 @@
             rgba($color-primary-light, 0.8), 
             rgba($color-primary-dark, 0.8)
         ), 
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-position: top;
     background-size: cover;
     /* clip-path: polygon(50% 20%, 50% 20%, 80% 80%, 20% 80%); */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
+
+    // jika resoulsi monitor lebih dari 192dpi dan layar lebih dari 600px(37.5em) maka implementasikan ini
+    // dan
+    // jika tdk mempertimbangkan dpi, tapi layar lebih dari 2000px(125em) maka implemen ini
+    // note :, koma pada media kuqry syntak bisa diartikan "or"
+    @media (min-resolution: 192dpi) and (min-width: 37.5em),
+        (min-width: 125em) {
+        background-image: 
+        linear-gradient(
+            to right bottom, 
+            rgba($color-primary-light, 0.8), 
+            rgba($color-primary-dark, 0.8)
+        ), 
+        url(../img/hero.jpg);
+    }
 
     @include res(phone) {
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
