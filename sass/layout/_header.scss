@@ -1,5 +1,5 @@
 .header {
-    height: 95vh;
+    height: 85vh;
     background-image: 
         linear-gradient(
             to right bottom, 
@@ -9,15 +9,22 @@
         url(../img/hero-small.jpg);
     background-position: top;
     background-size: cover;
-    /* clip-path: polygon(50% 20%, 50% 20%, 80% 80%, 20% 80%); */
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
+    /* clip-path: polygon(50% 20%, 50% 20%, 80% 80%, 20% 80%); */
+    // if the browser support clip path, then this code belo will be applied
+    @supports (clip-path: polygon(0 0)) or (-wbekit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
 
     // jika resoulsi monitor lebih dari 192dpi dan layar lebih dari 600px(37.5em) maka implementasikan ini
     // dan
     // jika tdk mempertimbangkan dpi, tapi layar lebih dari 2000px(125em) maka implemen ini
     // note :, koma pada media kuqry syntak bisa diartikan "or"
+    // -webkit-min-device-pixel-ratio uses by safari, they didnt support min-resolution
     @media (min-resolution: 192dpi) and (min-width: 37.5em),
+        (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
         (min-width: 125em) {
         background-image: 
         linear-gradient(
