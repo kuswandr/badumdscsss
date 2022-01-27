@@ -166,7 +166,10 @@
         font-weight: 100;
     }
 
-    @include res(tab_port) {
+    // @include res(tab_port) {
+    // hover none itu utk detect jika device yg dipakai oleh user itu emg benar2 gak bisa pake hover samsek, kek mobile & tablet
+    @media  only screen and (max-width: 56.25em),
+        only screen and (hover: none) {
         height: auto;
         border-radius: 3px;
         background-color: $color-white;
